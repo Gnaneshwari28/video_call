@@ -5,7 +5,8 @@
       >
          <app-participants [participant]="participant"></app-participants>
       </ng-container>
-    </div>
+  </div>
+  <webcam *ngIf="isCameraOn"></webcam>
     <div class="call-controls">
       <button (click)="toggleMicrophone()">Mic</button>
       <button (click)="toggleCamera()">Camera</button>

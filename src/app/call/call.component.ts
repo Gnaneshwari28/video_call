@@ -1,21 +1,24 @@
-import { Component, Input, Signal } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, Signal, ViewChild } from '@angular/core';
 import { CallingService } from '../calling.service';
 import { CommonModule } from '@angular/common';
 import { Call, StreamVideoParticipant } from '@stream-io/video-client';
 import { ParticipantsComponent } from '../participants/participants.component';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { WebcamModule } from 'ngx-webcam';
 
 @Component({
   selector: 'app-call',
   standalone: true,
   imports: [ParticipantsComponent,
-    CommonModule
+    CommonModule,
+    WebcamModule
   ],
   templateUrl: './call.component.html',
   styleUrl: './call.component.scss'
 })
 export class CallComponent {
   @Input({ required: true }) call!: Call;
+  isCameraOn: boolean = false;
 
   participants: Signal<StreamVideoParticipant[]>;
 
@@ -33,6 +36,7 @@ export class CallComponent {
 
   toggleCamera() {
     this.call.camera.toggle();
+    this.isCameraOn = !this.isCameraOn;
   }
 
   trackBySessionId(_: number, participant: StreamVideoParticipant) {
