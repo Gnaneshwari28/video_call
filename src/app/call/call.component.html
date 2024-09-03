@@ -1,13 +1,14 @@
 <section>
     <div class="participants">
-        <ng-container 
-        *ngFor=" let participants of participants(); trackBy: trackSessionById">
-        <app-participants></app-participants>
-        </ng-container>
+      <ng-container
+        *ngFor="let participant of participants(); trackBy: trackBySessionId"
+      >
+         <app-participants [participant]="participant"></app-participants>
+      </ng-container>
     </div>
     <div class="call-controls">
-         <button (click)="toggleMicrophone()">Mic</button>
-         <button (click)="toggleCamera()">Camera</button>
-         <button class="leave-button" (click)="leaveCall()">Leave</button>
+      <button (click)="toggleMicrophone()">Mic</button>
+      <button (click)="toggleCamera()">Camera</button>
+      <button class="leave-button" (click)="leaveCall()">Leave</button>
     </div>
-</section>
+  </section>

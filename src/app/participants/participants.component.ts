@@ -12,35 +12,35 @@ import { CallingService } from '../calling.service';
 })
 export class ParticipantsComponent {
 
-@ViewChild('videoElement') videoElement! : ElementRef<HTMLVideoElement>;
-@ViewChild('audioElement') audioElement! : ElementRef<HTMLAudioElement>;
+  @ViewChild('videoElement') videoElement!: ElementRef<HTMLVideoElement>;
+  @ViewChild('audioElement') audioElement!: ElementRef<HTMLAudioElement>;
 
-@Input() participant!: StreamVideoParticipant;
-unbindVideoElement: (()=>void) | undefined;
-unbindAudioElement: (()=>void) | undefined;
+  @Input() participant!: StreamVideoParticipant;
+  unbindVideoElement: (() => void) | undefined;
+  unbindAudioElement: (() => void) | undefined;
 
-constructor(private callingService : CallingService){}
+  constructor(private callingService: CallingService) {}
 
-ngAfterViewInit():void{
-   this.unbindVideoElement = this.callingService.call()
-    ?.bindVideoElement(
-      this.videoElement.nativeElement,
-      this.participant.sessionId,
-      'videoTrack'
-    );
+  ngAfterViewInit(): void {
+    this.unbindVideoElement = this.callingService
+      .call()
+      ?.bindVideoElement(
+        this.videoElement.nativeElement,
+        this.participant.sessionId,
+        'videoTrack'
+      );
 
-    this.unbindAudioElement = this.callingService.call()
-    ?.bindAudioElement(
-       this.audioElement.nativeElement,
-       this.participant.sessionId,
-       'audioTrack'
-    );
-}
+    this.unbindAudioElement = this.callingService
+      .call()
+      ?.bindAudioElement(
+        this.audioElement.nativeElement,
+        this.participant.sessionId
+      );
+  }
 
-ngOnDestroy():void{
-    this.unbindAudioElement?.();
+  ngOnDestroy(): void {
     this.unbindVideoElement?.();
-}
-
+    this.unbindAudioElement?.();
+  }
 
 }

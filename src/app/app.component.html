@@ -1,18 +1,13 @@
-<div id="root">
-  <stream-channel-list></stream-channel-list>
-  <stream-channel>
-    <stream-channel-header></stream-channel-header>
-    <stream-message-list></stream-message-list>
-    <stream-notification-list></stream-notification-list>
-    <stream-message-input></stream-message-input>
-    <stream-thread name="thread">
-      <stream-message-list mode="thread"></stream-message-list>
-      <stream-message-input mode="thread"></stream-message-input>
-    </stream-thread>
-  </stream-channel>
-  <ng-container>
-    <ng-container *ngIf="callingService.callId()">
-      <app-call [call]="callingService.call()!"></app-call>
-    </ng-container>
-  </ng-container>
-</div>
+<main>
+  <section class="join-section" *ngIf="!callingService.callId()">
+    <div class="join-call-form">
+      <label for="location-search">Join call</label>
+      <input id="location-search" #callId placeholder="Enter call id" />
+    </div>
+    <button (click)="setCallId(callId.value)">Join Call</button>
+  </section>
+  <section *ngIf="callingService.call()">
+    <app-call [call]="callingService.call()!"></app-call>
+  </section>
+  <router-outlet />
+</main>
