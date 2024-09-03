@@ -18,7 +18,7 @@ export class AppComponent {
     this.callingService = callingService;
   }
 
-  setCallId(callId: string) {
-    this.callingService.setCallId(callId);
+  setCallId() {
+    this.callingService.setCallId('cvYdDsTmdyPc');
   }
 }
