@@ -38,8 +38,7 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": [],
-             "baseHref": "/video_call/"
+            "scripts": []
           },
           "configurations": {
             "production": {
