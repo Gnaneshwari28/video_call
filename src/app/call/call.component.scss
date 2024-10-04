@@ -1,32 +1,128 @@
-section {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+// section {
+//     height: 100%;
+//     display: flex;
+//     flex-direction: column;
+//   }
+  
+//   .participants {
+//     display: flex;
+//     flex: 1;
+//     flex-direction: column;
+//     align-items: center;
+//     justify-content: center;
+//   }
+  
+//   .call-controls {
+//     display: grid;
+//     grid-template-columns: repeat(3, 1fr);
+//     gap: 0.5rem;
+//     padding: 0 0.5rem;
+//   }
+  
+//   button {
+//     font-size: smaller;
+//   }
+  
+//   .leave-button {
+//     background: var(--custom-red);
+//   }
+  
+//   .leave-button:hover {
+//     background: var(--custom-red-hover);
+//   }
+
+.call-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+   background-color: #1c1c1c;
+   color: rgba(255, 255, 255, 0.521);
   }
   
-  .participants {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  .participant-container {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   margin-bottom: 20px;
+  }
+  
+  .participant {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border-radius: 50%; /* Ensure circular shape */
+   width: 300px;
+   height: 300px;
+   overflow: hidden; /* Crop anything outside the circle */
+   position: relative;
+   background-color: #fdfafa; /* Fallback for video not being active */
+  }
+
+
+  
+  .participant-info {
+   margin-top: 10px;
+   font-size: 16px;
+  }
+  
+  .controls {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-top: 20px;
   }
   
   .call-controls {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.5rem;
-    padding: 0 0.5rem;
+   display: flex;
+   justify-content: space-around;
+   max-width: 400px;
+   width: 100%;
   }
   
-  button {
-    font-size: smaller;
+  .control-button {
+   background-color: #007bff;
+   color: white;
+   border: none;
+   border-radius: 5px;
+   padding: 10px 15px;
+   display: flex;
+   align-items: center;
+   cursor: pointer;
+   transition: background-color 0.3s, transform 0.3s;
+   font-size: 16px;
   }
   
   .leave-button {
-    background: var(--custom-red);
+   background-color: #dc3545;
+   color: white;
+   border: none;
+   border-radius: 5px;
+   padding: 10px 20px;
+   font-size: 16px;
+   cursor: pointer;
+   transition: background-color 0.3s, transform 0.3s;
   }
   
-  .leave-button:hover {
-    background: var(--custom-red-hover);
+  /* Adjust layout for larger screens */
+  @media (min-width: 768px) {
+   .call-section {
+   flex-direction: row;
+   }
+  
+   .participant {
+   width: 400px;
+   height: 400px;
+   }
+  }
+  
+  @media (min-width: 1024px) {
+   .participant {
+   width: 500px;
+   height: 500px;
+   }
+  
+   .call-controls {
+   max-width: 500px;
+   }
   }

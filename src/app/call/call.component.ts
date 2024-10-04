@@ -19,6 +19,8 @@ import { WebcamModule } from 'ngx-webcam';
 export class CallComponent {
   @Input({ required: true }) call!: Call;
   isCameraOn: boolean = false;
+  isMicOn: boolean = false;
+  isCamOn: boolean = false;
 
   participants: Signal<StreamVideoParticipant[]>;
 
@@ -31,12 +33,14 @@ export class CallComponent {
   }
 
   toggleMicrophone() {
+    this.isMicOn = !this.isMicOn;
     this.call.microphone.toggle();
   }
 
   toggleCamera() {
     this.call.camera.toggle();
     this.isCameraOn = !this.isCameraOn;
+    this.isCamOn = !this.isCamOn;
   }
 
   trackBySessionId(_: number, participant: StreamVideoParticipant) {
