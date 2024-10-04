@@ -39,7 +39,7 @@
               "src/styles.scss"
             ],
             "scripts": [],
-            "baseHref": "/video_chat"
+            "baseHref": "/video_chat/"
           },
           "configurations": {
             "production": {
