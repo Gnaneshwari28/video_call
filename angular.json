@@ -23,6 +23,12 @@
             "polyfills": [
               "zone.js"
             ],
+            "allowedCommonJsDependencies": [
+                "sdp-transform",
+                "ua-parser-js",
+                "base64-js",
+                "sdp"
+            ],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
