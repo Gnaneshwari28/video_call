@@ -1,4 +1,4 @@
-<section>
+<!-- <section>
     <div class="participants">
       <ng-container
         *ngFor="let participant of participants(); trackBy: trackBySessionId"
@@ -6,10 +6,64 @@
          <app-participants [participant]="participant"></app-participants>
       </ng-container>
   </div>
-  <webcam *ngIf="isCameraOn"></webcam>
+  <webcam  *ngIf="isCameraOn">
     <div class="call-controls">
-      <button (click)="toggleMicrophone()">Mic</button>
-      <button (click)="toggleCamera()">Camera</button>
+      <button (click)="toggleMicrophone()">
+        <div *ngIf="isMicOn">
+          <img src="https://angularicons.com/media/pages/icons/mic/731e39cfdf-1602599283/mic-48x48-crop.jpg" alt="Angular Icon: mic" width="24" height="24">
+        </div>
+        <div *ngIf="!isMicOn">
+          <img src="https://angularicons.com/media/pages/icons/mic-off/28c762a744-1602599283/mic-off-48x48-crop.jpg" alt="Angular Icon: mic-off" width="24" height="24">
+        </div>
+        Mic</button>
+      <button (click)="toggleCamera()">
+        <div *ngIf="isCamOn">
+      <img src="https://angularicons.com/media/pages/icons/camera/553b8e6f22-1602599203/camera-48x48-crop.jpg" alt="Angular Icon: camera" width="24" height="24"> 
+      </div>
+      <div *ngIf="!isCamOn">
+      <img src="https://angularicons.com/media/pages/icons/camera-off/4561067c26-1602599364/camera-off-48x48-crop.jpg" alt="Angular Icon: camera-off" width="24" height="24">
+    </div>
+    Camera</button>
       <button class="leave-button" (click)="leaveCall()">Leave</button>
     </div>
+  </webcam>
+  </section> -->
+
+  <section class="call-section">
+    <div class="participant-container">
+      <div class="participant">
+        <webcam *ngIf="isCameraOn" [height]="900" [width]="900"></webcam>
+        <div class="participant-info">
+            <ng-container
+              *ngFor="let participant of participants(); trackBy: trackBySessionId"
+            >
+               <app-participants [participant]="participant"></app-participants>
+            </ng-container>
+        </div>
+        </div>
+      </div>
+      <div class="controls">
+        <div class="call-controls">
+          <button class="control-button" (click)="toggleMicrophone()">
+            <div *ngIf="isMicOn">
+              <img src="https://angularicons.com/media/pages/icons/mic/731e39cfdf-1602599283/mic-48x48-crop.jpg" alt="Mic On" width="24" height="24">
+            </div>
+            <div *ngIf="!isMicOn">
+              <img src="https://angularicons.com/media/pages/icons/mic-off/28c762a744-1602599283/mic-off-48x48-crop.jpg" alt="Mic Off" width="24" height="24">
+            </div>
+            Mic
+          </button>
+          <button class="control-button" (click)="toggleCamera()">
+            <div *ngIf="isCamOn">
+              <img src="https://angularicons.com/media/pages/icons/camera/553b8e6f22-1602599203/camera-48x48-crop.jpg" alt="Camera On" width="24" height="24"> 
+            </div>
+            <div *ngIf="!isCamOn">
+              <img src="https://angularicons.com/media/pages/icons/camera-off/4561067c26-1602599364/camera-off-48x48-crop.jpg" alt="Camera Off" width="24" height="24">
+            </div>
+            Camera
+          </button>
+          <button class="leave-button" (click)="leaveCall()">Leave</button>
+        </div>
+      </div>
   </section>
+  

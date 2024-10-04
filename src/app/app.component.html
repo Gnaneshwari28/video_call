@@ -2,7 +2,7 @@
   <section class="join-section" *ngIf="!callingService.callId()">
     <button (click)="setCallId()">Join Call</button>
   </section>
-  <section *ngIf="callingService.call()">
+  <section  *ngIf="callingService.call()">
     <app-call [call]="callingService.call()!"></app-call>
   </section>
   <router-outlet />
